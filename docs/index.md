@@ -1,4 +1,4 @@
-Picky eater
+## Summary
 
 An online resource that gives the user recipe ideas for a full menu selection.
 The purpose of this app will allow any user to type in an ingredient and choose a recipe to make from a database of multi-ethnic selections.
@@ -9,10 +9,11 @@ The purpose of this app will allow any user to type in an ingredient and choose 
 The user will type in a dish they think they want and the app will make varied suggestions, listing various recipes and ideas. 
 
 Intended users include kids, students, parents.
-User 1: Busy time-crunching adult, busier household.
-User 2: Adventurous cook looking for a new recipe to try.
-User 3; students and /or kids looking to make something to eat for themselves
-User 4: culinary aficianados
+
+* User 1: Busy time-crunching adult, busier household.
+* User 2: Adventurous cook looking for a new recipe to try.
+* User 3; students and /or kids looking to make something to eat for themselves
+* User 4: culinary aficianados
 
 
 Adults would use this to find a different use for a favorite base ingredient.
