@@ -1,46 +1,58 @@
-## Summary
+Picky eater
 
 An online resource that gives the user recipe ideas for a full menu selection.
+The purpose of this app will allow any user to type in an ingredient and choose a recipe to make from a database of multi-ethnic selections.
+
 
 ## Intended users
 
 The user will type in a dish they think they want and the app will make varied suggestions, listing various recipes and ideas. 
 
 Intended users include kids, students, parents.
-A dish will get typed in, the databse will make suggestions based on the users tastes.
+User 1: Busy time-crunching adult, busier household.
+User 2: Adventurous cook looking for a new recipe to try.
+User 3; students and /or kids looking to make something to eat for themselves
+User 4: culinary aficianados
 
-> As a <person who likes to eat (_eater_)> I want to <find recipes that suit my tastes (_happiness_)> so that <benefit (_raw ingredients are used to create something delicous to eat_).
-> 
 
-Please avoid writing too much for the user story. In particular, if the way the user story is written makes it difficult to see the _who_, _what_, and _why_, then you probably need to re-write it more directly. (On the other hand, a user story should not simply be a re-statement of the intended user description.)
+Adults would use this to find a different use for a favorite base ingredient.
+Adventurers would use this to try something completely different, taste-wise.
+Students/kids would use this to further their education in the kitchen.
+Culinary aficionados would use to help them plan dinner parties.
 
-Here is one (silly) example of an intended user, along with a user story. Please note not only the conceptual structure, but the Markdown syntax used.
-
-* People who like to use randomness in their decision making.
-
-    > As someone who enjoys randomness in my life, I need an app that lets me flip a virtual coin or roll one or more virtual dice, so that I can base my decisions on randomness, without having to carry coins or dice in my pockets.
 
 ## Functionality
-The user will start with a specific dish, if the user likes the random choice brought up, various recipes will follow.  
+As a busy parent, I would use an app like to this to:
+broaden my culinary repertoire
+expand my family's palate,
+plan menus that please me and my kids
+
+The User will start with a specific dish, and if the User likes the random choice brought up, various recipes will follow.  
 Ingredient suggestions will be listed.
+
 The user will be able to succesfully choose and plan a meal for themselves or any person they might be cooking for.
 
 ## Persistent data User 
-User data such as:
-log in
-preference 
-search history
-recipe suggestions with varients such as vegetarian or even vegan.
+search history will include the User being able to alter ingredients to the chosen recipe, then updating said recipe and saving those change within their user history.
+ 
 
-List, in general terms and using a bullet list, what content will be stored on the Android device. This should include any information that users of your app would expect to be maintained (i.e. without connection to a server) across multiple sessions of use. 
-    
 ## Device/external services
 
-All previously stored data will be bookmarked for the user so they can access the information at any time.
+All previously stored data will be bookmarked for the User so they can access the information at any time.
+Stored content will include:
+User name
+search history - including any altered recipes they have chosen to update and save.
+favorites
+ingredient alternatives
 
 If the client component will need to access special services of the device (e.g. sensors, contacts, messaging), list them here using a bullet list. Also, if the client component will need to access already-existing external services (e.g. real-time weather data, Open Movie Database, Open Trivia Database), those should also be listed here; any such references to external services should include links to the main page or API description page for the service.
+
+
+Internet access will be used to setup the User's initial account.
+Bookmarks will be used to allow the User to have offline access to their respective lists.
 
 ## Stretch goals/possible enhancements 
 
 If you can identify functional elements of the software that you think might not be achievable in the scope of the project, but which would nonetheless add significant value if you were able to include them, list them here. For now, we recommend listing them in order of complexity/amount of work, from the least to the most.
 I am not sure which components or programs will be used to complete this task yet.
+
