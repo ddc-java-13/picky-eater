@@ -1,12 +1,11 @@
 Picky Eater
 
-
 Summary
 
 Replace this paragraph with one or more paragraphs summarizing the purpose and operation of the Android app you propose to develop in this project.
+The purpose of this app is to to allow  the Userr to take an ingredient and put it into a database that will help thm to choose a recipe based on their selected ingredient.
 
 ## Intended users
-
 An online resource that gives the user recipe ideas for a full menu selection.
 The purpose of this app will allow any user to type in an ingredient and choose a recipe to make from a database of multi-ethnic selections.
 
@@ -31,7 +30,6 @@ Intended users include:
 
 
 ## Functionality
-
 * The main use for this app will be that the User can easily access simple to complex recipes using whatever ingredients they have on hand at the click of a few buttons.
 
 * Ingredient suggestions will be listed, alphabetically.
@@ -39,7 +37,6 @@ Intended users include:
 * The user will be able to succesfully choose and plan a meal for themselves and/or any person they might be cooking for.
 
 ## Persistent data
-
 All previously stored data will be encrypted for the User so they can access the information at any time.
 
   * Search history will be stored under password encryption.
@@ -53,7 +50,6 @@ All previously stored data will be encrypted for the User so they can access the
   * Bookmarks will be used to allow the User to have offline access to their respective lists.
 
 ## Device/external services
-
 Software will include:
 * internet access
 * Bookmarks
@@ -62,6 +58,8 @@ Software will include:
 
 ## Stretch goals/possible enhancements
 enhancements: TBD
+
+
 
 
 
