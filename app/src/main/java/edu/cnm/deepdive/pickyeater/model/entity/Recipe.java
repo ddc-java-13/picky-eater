@@ -9,7 +9,7 @@ import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
-public class Recipe extends Context {
+public class Recipe  {
 
   Single<Long> (Recipe); {
     return null;

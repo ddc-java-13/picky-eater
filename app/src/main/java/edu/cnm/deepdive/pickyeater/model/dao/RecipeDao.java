@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.pickyeater.model.dao;
 
 import android.content.Context;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Update;
@@ -10,58 +11,37 @@ import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
+@Dao
 public interface RecipeDao {
 
-  Single<Long> (Recipe);
+  @Insert
+  Single<Long> insert(Recipe recipe);
 
   @Insert
-  default Single<List<Long>> insert(Recipe... guesses) {
-    return null;
-  }
+  Single<List<Long>> insert(Recipe... guesses);
 
 
   @Insert
-  default Single<List<Long>> insert(Collection<? extends Recipe> recipes) {
-    return null;
-  }
+  Single<List<Long>> insert(Collection<? extends Recipe> recipes);
 
   @Update
-  default Single<Integer> update(Recipe recipe) {
-    return null;
-  }
+  Single<Integer> update(Recipe recipe);
 
   @Update
-  default Single<Integer> update(Recipe... recipes) {
-    return null;
-  }
+  Single<Integer> update(Recipe... recipes);
 
   @Update
-  default Single<Integer> update(Collection<? extends Recipe> recipes) {
-    return null;
-  }
+  Single<Integer> update(Collection<? extends Recipe> recipes);
 
   @Delete
-  default Single<Integer> delete(Recipe recipe) {
-    return null;
-  }
+  Single<Integer> delete(Recipe recipe);
 
   @Delete
-  default Single<Integer> delete(Recipe... recipes) {
-    return null;
-  }
+  Single<Integer> delete(Recipe... recipes);
 
   @Delete
-  default Single<Integer> delete(Collection<? extends Recipe> recipes) {
-    return null;
-  }
+  Single<Integer> delete(Collection<? extends Recipe> recipes);
 
-
-  @Override
-  void onCreate() {
-    super.onCreate();
-    Stetho.initializeWithDefaults((Context) this);
-  }
 
 }
 
-}
