@@ -1,5 +1,5 @@
-package edu.cnm.deepdive.pickyeater.model.entity;
-
-public class History {
-
-}
+//package edu.cnm.deepdive.pickyeater.model.entity;
+//
+//public class History {
+//
+//}

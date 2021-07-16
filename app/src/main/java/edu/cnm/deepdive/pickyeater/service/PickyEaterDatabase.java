@@ -5,40 +5,44 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+import edu.cnm.deepdive.pickyeater.model.dao.RecipeDao;
+import edu.cnm.deepdive.pickyeater.model.dao.UserDao;
 import edu.cnm.deepdive.pickyeater.model.entity.Recipe;
+import edu.cnm.deepdive.pickyeater.model.entity.User;
+import edu.cnm.deepdive.pickyeater.service.PickyEaterDatabase.Converters;
 import java.util.Date;
 
-public class PickyEaterDatabase {
 
   @Database(
-      entities = {Recipe.class, Recipe.class},
-      version = 2,
+      entities = {Recipe.class},
+      version = 1,
       exportSchema = true
   )
+  @TypeConverters(value = {Converters.class})
 
-  //@TypeConverters((Converters.class))
+  public abstract class PickyEaterDatabase extends RoomDatabase {
 
-  public abstract static class PickyeaterDatabase<GuessDao, GameDao> extends RoomDatabase {
-
-    private static final String DB_NAME = "pickyeater-db";
+    private static final String DB_NAME = "pickyeater_db";
 
     private static Application context;
 
-    public static PickyeaterDatabase getInstance() {
+    public static PickyEaterDatabase getInstance() {
       return InstanceHolder.INSTANCE;
     }
 
 
     private static class InstanceHolder {
 
-      private static final PickyeaterDatabase INSTANCE =
-          Room.databaseBuilder(context, PickyeaterDatabase.class, DB_NAME)
+
+      private static final PickyEaterDatabase INSTANCE =
+          Room.databaseBuilder(context, PickyEaterDatabase.class, DB_NAME)
               .build();
     }
 
-    public abstract GameDao getgetGameDao();
+    public abstract UserDao getUserDao();
 
-    public abstract GuessDao getGuessDao();
+    public abstract RecipeDao getRecipeDao();
 
     public static class Converters {
 
@@ -55,17 +59,4 @@ public class PickyEaterDatabase {
     }
 
   }
-}
-// @TypeConverter
-  //public static Long toLong(Date value) {
-  //  return (value != null) ? value.getTime() : null;
-// }
 
-//@TypeConverter
-// public static Date toDtae(Long value) {
-//   reyrn (value != null) ? new Date (value)
-// }
-
-
-
-//de
