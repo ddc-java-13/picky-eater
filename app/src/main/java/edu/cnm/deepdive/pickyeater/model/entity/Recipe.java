@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity(
    tableName = "recipe",
-    //foreignKeys = {
+    foreignKeys = {
         @ForeignKey(
             entity = User.class,
             childColumns = {"user_id"},
