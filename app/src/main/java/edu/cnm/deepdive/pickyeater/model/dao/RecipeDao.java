@@ -42,6 +42,11 @@ public interface RecipeDao {
   @Delete
   Single<Integer> delete(Collection<? extends Recipe> recipes);
 
+  // TODO
+  //  - add Query method to retrieve a single recipe based on its id.
+  //  - add query methos to select several recipes based on cuisine
+  //  - add query method to retrieve multiple recieps based on the user id
+
 
 }
 

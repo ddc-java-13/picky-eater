@@ -22,7 +22,7 @@ import java.util.Date;
     )
 public class Recipe {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "recipe_id")
     private long id;
 
@@ -41,6 +41,7 @@ public class Recipe {
     @ColumnInfo(index = true)
     private Cuisine cuisine;
 
+    //TODO add a long indexed field for User ID; generate setter and getter; add Foreign key attribute to entity annotation.
     public long getId() {
         return id;
     }
@@ -91,5 +92,7 @@ public class Recipe {
 
     public enum Cuisine {
         CHICKEN , BEEF;
+        // TODO add converter methods
+
     }
 }
