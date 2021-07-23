@@ -1,9 +1,11 @@
 package edu.cnm.deepdive.pickyeater.model.dao;
 
 import android.content.Context;
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
 import androidx.room.Update;
 import com.facebook.stetho.Stetho;
 import edu.cnm.deepdive.pickyeater.model.entity.Recipe;
@@ -12,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Dao
-public interface RecipeDao {
+public interface RecipeDao<PickyEater> {
 
   @Insert
   Single<Long> insert(Recipe recipe);
@@ -44,9 +46,17 @@ public interface RecipeDao {
 
   // TODO
   //  - add Query method to retrieve a single recipe based on its id.
-  //  - add query methos to select several recipes based on cuisine
+  //  - add query method to select several recipes based on cuisine
   //  - add query method to retrieve multiple recieps based on the user id
 
+  @Query("SELECT * FROM recipe [WHERE recipe_id = :recipeId")
+  LiveData<PickyEater> select(long recipeId);
+
+  @Query("SELECT * FROM Ingredient WHERE ingredient_id = :ingredientId")
+  LiveData<ingredient> select(long guessId);
+
+  @Query("SELECT * FROM cuisine WHERE cuisine_id = :guessId")
+  LiveData<cuisine> select(long guessId);
 
 }
 
