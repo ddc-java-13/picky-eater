@@ -8,7 +8,6 @@ import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import edu.cnm.deepdive.pickyeater.model.dao.RecipeDao;
 import edu.cnm.deepdive.pickyeater.model.dao.UserDao;
-import edu.cnm.deepdive.pickyeater.model.entity.Recipe;
 import edu.cnm.deepdive.pickyeater.model.entity.User;
 import edu.cnm.deepdive.pickyeater.service.PickyEaterDatabase.Converters;
 import java.util.Date;

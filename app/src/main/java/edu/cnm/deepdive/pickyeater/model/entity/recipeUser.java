@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.pickyeater.model.dao;
+package edu.cnm.deepdive.pickyeater.entity;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Delete;
@@ -12,9 +12,7 @@ import java.util.List;
 
 public interface UserDao {
 
-  public abstract @interface Dao {
-
-  }
+  public abstract @interface Dao
 
 
   @androidx.room.Dao
