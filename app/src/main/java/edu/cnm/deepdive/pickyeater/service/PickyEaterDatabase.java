@@ -6,15 +6,18 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
+import edu.cnm.deepdive.pickyeater.model.dao.IngredientDao;
 import edu.cnm.deepdive.pickyeater.model.dao.RecipeDao;
 import edu.cnm.deepdive.pickyeater.model.dao.UserDao;
+import edu.cnm.deepdive.pickyeater.model.entity.Ingredient;
+import edu.cnm.deepdive.pickyeater.model.entity.Recipe;
 import edu.cnm.deepdive.pickyeater.model.entity.User;
 import edu.cnm.deepdive.pickyeater.service.PickyEaterDatabase.Converters;
 import java.util.Date;
 
 
   @Database(
-      entities = {Recipe.class},
+      entities = {Recipe.class, Ingredient.class, User.class},
       version = 1,
       exportSchema = true
   )
@@ -26,22 +29,26 @@ import java.util.Date;
 
     private static Application context;
 
-    public static PickyEaterDatabase getInstance() {
-      return InstanceHolder.INSTANCE;
+    public static void setContext(Application context) {
+      PickyEaterDatabase.context = context;
     }
 
-
-    private static class InstanceHolder {
-
-
-      private static final PickyEaterDatabase INSTANCE =
-          Room.databaseBuilder(context, PickyEaterDatabase.class, DB_NAME)
-              .build();
+    public static PickyEaterDatabase getInstance() {
+      return InstanceHolder.INSTANCE;
     }
 
     public abstract UserDao getUserDao();
 
     public abstract RecipeDao getRecipeDao();
+
+    public abstract IngredientDao getIngredientDao();
+
+    private static class InstanceHolder {
+
+      private static final PickyEaterDatabase INSTANCE =
+          Room.databaseBuilder(context, PickyEaterDatabase.class, DB_NAME)
+              .build();
+    }
 
     public static class Converters {
 

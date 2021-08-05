@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0f914dbc9e774f0cd912fc21b480ba38",
+    "identityHash": "e5059d17c75308a716f3409cfa0c8a93",
     "entities": [
       {
-        "tableName": "recipe",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recipe_id` INTEGER NOT NULL, `date_created` INTEGER, `updated` INTEGER, `author` TEXT, `recipe_name` TEXT, `cuisine` TEXT, PRIMARY KEY(`recipe_id`))",
+        "tableName": "Recipe",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recipe_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `updated` INTEGER, `author` TEXT COLLATE NOCASE, `name` TEXT NOT NULL, `instructions` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -16,9 +16,9 @@
           },
           {
             "fieldPath": "created",
-            "columnName": "date_created",
+            "columnName": "created",
             "affinity": "INTEGER",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "updated",
@@ -34,63 +34,151 @@
           },
           {
             "fieldPath": "name",
-            "columnName": "recipe_name",
+            "columnName": "name",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
-            "fieldPath": "cuisine",
-            "columnName": "cuisine",
+            "fieldPath": "instructions",
+            "columnName": "instructions",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
             "recipe_id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [
           {
-            "name": "index_recipe_date_created",
-            "unique": false,
-            "columnNames": [
-              "date_created"
-            ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_recipe_date_created` ON `${TABLE_NAME}` (`date_created`)"
-          },
-          {
-            "name": "index_recipe_updated",
-            "unique": false,
-            "columnNames": [
-              "updated"
-            ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_recipe_updated` ON `${TABLE_NAME}` (`updated`)"
-          },
-          {
-            "name": "index_recipe_author",
+            "name": "index_Recipe_author",
             "unique": false,
             "columnNames": [
               "author"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_recipe_author` ON `${TABLE_NAME}` (`author`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Recipe_author` ON `${TABLE_NAME}` (`author`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Ingredient",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ingredient_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL COLLATE NOCASE, `quantity` TEXT, `recipe_id` INTEGER NOT NULL, FOREIGN KEY(`recipe_id`) REFERENCES `Recipe`(`recipe_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "ingredient_id",
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
-            "name": "index_recipe_recipe_name",
-            "unique": false,
-            "columnNames": [
-              "recipe_name"
-            ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_recipe_recipe_name` ON `${TABLE_NAME}` (`recipe_name`)"
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
           },
           {
-            "name": "index_recipe_cuisine",
+            "fieldPath": "quantity",
+            "columnName": "quantity",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "recipeId",
+            "columnName": "recipe_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "ingredient_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Ingredient_name",
             "unique": false,
             "columnNames": [
-              "cuisine"
+              "name"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_recipe_cuisine` ON `${TABLE_NAME}` (`cuisine`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Ingredient_name` ON `${TABLE_NAME}` (`name`)"
+          },
+          {
+            "name": "index_Ingredient_recipe_id",
+            "unique": false,
+            "columnNames": [
+              "recipe_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Ingredient_recipe_id` ON `${TABLE_NAME}` (`recipe_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Recipe",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "recipe_id"
+            ],
+            "referencedColumns": [
+              "recipe_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT, `service_key` TEXT NOT NULL, `created` INTEGER NOT NULL, `displayName` TEXT NOT NULL, `oauthKey` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "serviceKey",
+            "columnName": "service_key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "created",
+            "columnName": "created",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "displayName",
+            "columnName": "displayName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "oauthKey",
+            "columnName": "oauthKey",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "user_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_User_created",
+            "unique": false,
+            "columnNames": [
+              "created"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_User_created` ON `${TABLE_NAME}` (`created`)"
           }
         ],
         "foreignKeys": []
@@ -99,7 +187,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0f914dbc9e774f0cd912fc21b480ba38')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e5059d17c75308a716f3409cfa0c8a93')"
     ]
   }
 }

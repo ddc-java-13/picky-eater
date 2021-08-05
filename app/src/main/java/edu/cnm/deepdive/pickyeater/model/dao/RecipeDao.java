@@ -6,12 +6,14 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+import edu.cnm.deepdive.pickyeater.model.entity.Recipe;
+import edu.cnm.deepdive.pickyeater.model.pojo.RecipeWithIngredients;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
 @Dao
-public interface RecipeDao<PickyEater> {
+public interface RecipeDao {
 
   @Insert
   Single<Long> insert(Recipe recipe);
@@ -44,16 +46,21 @@ public interface RecipeDao<PickyEater> {
   // TODO
   //  - add Query method to retrieve a single recipe based on its id.
   //  - add query method to select several recipes based on cuisine
-  //  - add query method to retrieve multiple recieps based on the user id
+  //  - add query method to retrieve multiple recipes based on the user id
 
-  @Query("SELECT * FROM recipe [WHERE recipe_id = :recipeId")
-  LiveData<PickyEater> select(long recipeId);
+  @Query("SELECT * FROM Recipe WHERE author LIKE :author ORDER BY name ASC")
+  LiveData<List<RecipeWithIngredients>> searchByAuthor(String author);
 
-  @Query("SELECT * FROM Ingredient WHERE ingredient_id = :ingredientId")
-  LiveData<ingredient> select(long guessId);
+  @Query("SELECT * FROM Recipe WHERE recipe_id = :id")
+  LiveData<RecipeWithIngredients> select(long id);
 
-  @Query("SELECT * FROM cuisine WHERE cuisine_id = :guessId")
-  LiveData<cuisine> select(long guessId);
+  @Query("SELECT * FROM Recipe WHERE name LIKE :name ORDER BY name ASC")
+  LiveData<List<RecipeWithIngredients>> searchByName(String name);
 
+  @Query("SELECT r.* FROM Recipe AS r "
+      + "INNER JOIN Ingredient AS i ON r.recipe_id = i.recipe_id "
+      + "WHERE i.name LIKE :ingredientName "
+      + "ORDER BY r.name ASC")
+  LiveData<List<RecipeWithIngredients>> searchByIngredient(String ingredientName);
 }
 
