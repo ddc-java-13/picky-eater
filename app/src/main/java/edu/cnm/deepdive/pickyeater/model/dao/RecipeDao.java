@@ -43,11 +43,6 @@ public interface RecipeDao {
   @Delete
   Single<Integer> delete(Collection<? extends Recipe> recipes);
 
-  // TODO
-  //  - add Query method to retrieve a single recipe based on its id.
-  //  - add query method to select several recipes based on cuisine
-  //  - add query method to retrieve multiple recipes based on the user id
-
   @Query("SELECT * FROM Recipe WHERE author LIKE :author ORDER BY name ASC")
   LiveData<List<RecipeWithIngredients>> searchByAuthor(String author);
 

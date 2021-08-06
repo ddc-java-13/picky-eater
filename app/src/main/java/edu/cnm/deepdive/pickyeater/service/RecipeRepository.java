@@ -1,8 +1,10 @@
 package edu.cnm.deepdive.pickyeater.service;
 
 import android.content.Context;
+import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.pickyeater.model.dao.IngredientDao;
 import edu.cnm.deepdive.pickyeater.model.dao.RecipeDao;
+import edu.cnm.deepdive.pickyeater.model.dao.UserDao;
 import edu.cnm.deepdive.pickyeater.model.entity.Ingredient;
 import edu.cnm.deepdive.pickyeater.model.entity.Recipe;
 import edu.cnm.deepdive.pickyeater.model.pojo.RecipeWithIngredients;
@@ -20,6 +22,7 @@ public class RecipeRepository {
   private final Context context;
   private final RecipeDao recipeDao;
   private final IngredientDao ingredientDao;
+  private final Object UserDao;
 
   public RecipeRepository(Context context) {
     this.context = context;
@@ -27,6 +30,7 @@ public class RecipeRepository {
     PickyEaterDatabase database = PickyEaterDatabase.getInstance();
     recipeDao = database.getRecipeDao();
     ingredientDao = database.getIngredientDao();
+    UserDao = database.getUserDao();
   }
 
 
@@ -47,7 +51,12 @@ public class RecipeRepository {
         .subscribeOn(Schedulers.io());
   }
 
-  @NotNull
+  public LiveData<List<RecipeWithIngredients>> searchByIngredient(String nameFragment){
+    return recipeDao.searchByIngredient('%' + nameFragment + '%');
+  }
+
+  public LiveData<List<>
+
   private Single<RecipeWithIngredients> saveIngredients(
       RecipeWithIngredients updatedRecipe) {
     List<Ingredient> ingredientsToUpdate = new LinkedList<>();
