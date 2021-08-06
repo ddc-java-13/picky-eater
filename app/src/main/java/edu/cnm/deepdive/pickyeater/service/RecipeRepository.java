@@ -55,7 +55,9 @@ public class RecipeRepository {
     return recipeDao.searchByIngredient('%' + nameFragment + '%');
   }
 
-  public LiveData<List<>
+  public LiveData<RecipeWithIngredients> get(long id) {
+    return recipeDao.select(id);
+  }
 
   private Single<RecipeWithIngredients> saveIngredients(
       RecipeWithIngredients updatedRecipe) {
