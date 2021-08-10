@@ -13,6 +13,9 @@ import edu.cnm.deepdive.pickyeater.model.pojo.RecipeWithIngredients;
 import java.text.DateFormat;
 import java.util.List;
 
+/**
+ * Adaptive recycler view integrated by the user to implement Recipe queries.
+ */
 public class SearchResultsAdapter extends RecyclerView.Adapter<Holder> {
 
   private final Context context;
@@ -21,6 +24,12 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<Holder> {
   private final LayoutInflater inflater;
   private final DateFormat dateFormat;
 
+  /**
+   * Inflater used in data retrieval by User.
+   * @param context
+   * @param recipes
+   * @param listener
+   */
   public SearchResultsAdapter(Context context,
       List<RecipeWithIngredients> recipes,
       OnRecipeClickListener listener) {
@@ -50,8 +59,13 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<Holder> {
 
   class Holder extends RecyclerView.ViewHolder {
 
+
     private ItemRecipeBinding binding;
 
+    /**
+     * Binding of binding superclass.
+     * @param binding
+     */
     public Holder(@NonNull ItemRecipeBinding binding) {
       super(binding.getRoot());
       this.binding = binding;
