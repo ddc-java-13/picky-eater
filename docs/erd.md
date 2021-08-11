@@ -5,5 +5,5 @@ menu: ERD
 order: 20
 ---
 
-##
+[![entity-relationship-diagram](img/erd.png)](pdf/erd.pdf)
 
